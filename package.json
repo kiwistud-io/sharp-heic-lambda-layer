@@ -7,9 +7,9 @@
     "test": "npm run lint",
     "lint": "npx eslint .",
     "lint:fix": "npx eslint --fix .",
-    "build": "sam build",
-    "prepackage": "node deployment/createSAMConfiguration.js > samconfig.toml",
-    "package": "sam package",
+    "build": "sam build --use-container",
+    "prepackage": "dotenv node deployment/createSAMConfiguration.js > samconfig.toml",
+    "package": "dotenv sam package",
     "predeploy": "npm run package",
     "deploy": "sam deploy"
   },
@@ -29,5 +29,8 @@
   },
   "devDependencies": {
     "eslint": "^7.32.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3"
   }
 }
